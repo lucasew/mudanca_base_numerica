@@ -1,5 +1,5 @@
 [tools]
-workspaced = "0.1.0"
+"npm:workspaced" = "0.1.0"
 
 [tasks]
 install = 'echo "No dependencies to install"'
