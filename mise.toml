@@ -1,0 +1,10 @@
+[tools]
+workspaced = "0.1.0"
+
+[tasks]
+install = 'echo "No dependencies to install"'
+lint = { run = "workspaced codebase lint", description = "Lint the codebase" }
+fmt = { run = "workspaced codebase format", description = "Format the codebase" }
+codegen = { run = "echo 'No codegen to run'", description = "Run code generation" }
+test = { run = "make && ./basecalc --test", description = "Run tests" }
+ci = { depends = ["lint", "test"], description = "Run CI pipeline" }
