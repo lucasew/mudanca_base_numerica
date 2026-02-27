@@ -1,6 +1,9 @@
 [tools]
 "npm:workspaced" = "0.1.0"
+# Python 2.7.18 is required for node-sass@4.14.1 (dependency of workspaced@0.1.0)
 python = "2.7.18"
+# Node 14 is required for node-sass@4.14.1
+node = "14.21.3"
 
 [tasks]
 install = 'echo "No dependencies to install"'
