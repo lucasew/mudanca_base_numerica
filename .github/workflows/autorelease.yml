@@ -18,9 +18,14 @@ jobs:
           fetch-depth: 0
 
       - uses: jdx/mise-action@v2
+        with:
+          install: false
+
+      - name: Install Python 2.7 for node-sass
+        run: mise install python@2.7.18
 
       - name: Install dependencies
-        run: mise run install
+        run: mise install
 
       - name: Codegen
         run: mise run codegen
