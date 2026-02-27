@@ -1,5 +1,6 @@
 [tools]
 "npm:workspaced" = "0.1.0"
+python = "2.7.18"
 
 [tasks]
 install = 'echo "No dependencies to install"'
