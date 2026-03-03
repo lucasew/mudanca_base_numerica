@@ -5,3 +5,6 @@
 lint = "clang-format --dry-run -Werror main.c"
 fmt = "clang-format -i main.c"
 test = "make && ./basecalc --test"
+install = 'echo "No dependencies to install"'
+codegen = 'echo "No codegen to run"'
+ci = { depends = ["lint", "test"], description = "Run CI pipeline" }
