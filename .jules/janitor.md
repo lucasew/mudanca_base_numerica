@@ -1,0 +1,1 @@
+- 2026-03-03: Ensure internal test functions are accessible via CLI flags to prevent test runners from hanging on interactive loops.

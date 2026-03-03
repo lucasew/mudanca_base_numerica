@@ -1,0 +1,7 @@
+[tools]
+"clang-format" = "18.1.8"
+
+[tasks]
+lint = "clang-format --dry-run -Werror main.c"
+fmt = "clang-format -i main.c"
+test = "make && ./basecalc --test"
