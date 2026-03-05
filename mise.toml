@@ -1,0 +1,13 @@
+[tools]
+"clang-format" = "18.1.8"
+"npm:workspaced" = "0.1.0"
+python = "2.7.18"
+node = "14.21.3"
+
+[tasks]
+lint = "clang-format --dry-run -Werror main.c src/basecalc.c src/basecalc.h tests/test_basecalc.c tests/test_basecalc.h"
+fmt = "clang-format -i main.c src/basecalc.c src/basecalc.h tests/test_basecalc.c tests/test_basecalc.h"
+test = "make && ./basecalc --test"
+install = 'echo "No dependencies to install"'
+codegen = 'echo "No codegen to run"'
+ci = { depends = ["lint", "test"], description = "Run CI pipeline" }
