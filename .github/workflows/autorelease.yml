@@ -22,6 +22,12 @@ jobs:
         with:
           install: false
 
+      - name: Install Python 2.7 for node-sass
+        run: mise install python@2.7.18
+
+      - name: Install Node 14 for node-sass
+        run: mise install node@14.21.3
+
       - name: Install dependencies
         run: mise install && mise run install
 
