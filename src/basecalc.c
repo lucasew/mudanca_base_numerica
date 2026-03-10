@@ -51,7 +51,9 @@ long int decode_base(char *source, int basein) {
     return 0;
   int n = decode_char(source[0]);
   if (n >= basein) {
-    report_error("Valores invalidos de entrada encontrados: %c. O resultado sera prejudicado.", source[0]);
+    report_error("Valores invalidos de entrada encontrados: %c. O resultado "
+                 "sera prejudicado.",
+                 source[0]);
   };
   long int res = decode_base(source + 1, basein);
   res +=
