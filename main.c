@@ -102,7 +102,11 @@ void test() {
     printf("\n");
 }
 
-int main() {
+int main(int argc, char *argv[]) {
+    if (argc > 1 && strcmp(argv[1], "--test") == 0) {
+        test();
+        return 0;
+    }
 #define ISBASEVALIDA(base) \
     if (base > 35) { \
         printf("E: Base inválida!\n"); \
@@ -110,19 +114,28 @@ int main() {
      }
     printf("Digite o número da base de origem: ");
     int basein;
-    scanf("%i", &basein);
+    if (scanf("%i", &basein) != 1) {
+        printf("E: Entrada inválida!\n");
+        return 1;
+    }
     ISBASEVALIDA(basein)
     printf("Digite o número da base de saída: ");
     int baseout;
-    scanf("%i", &baseout);
+    if (scanf("%i", &baseout) != 1) {
+        printf("E: Entrada inválida!\n");
+        return 1;
+    }
     ISBASEVALIDA(baseout);
     printf("Pronto para digitar valores, pressione Ctrl+C para parar.\n");
     char entrada[50];
     while(1) {
         printf("Valor -> ");
-        scanf("%49s", entrada);
+        if (scanf("%49s", entrada) != 1) {
+            break;
+        }
         long int decoded = decode_base(entrada, basein);
         encode_base(decoded, baseout);
         printf("\n");
     }
+    return 0;
 }

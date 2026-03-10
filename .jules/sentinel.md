@@ -1,0 +1,1 @@
+- 2026-03-10: [Medium: ignored/swallowed errors - ignored return value of scanf can lead to undefined behavior or infinite loops on invalid input]
