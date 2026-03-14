@@ -9,7 +9,15 @@
 #include <assert.h>
 #include <stdlib.h>
 
-// Obtem o valor correspondente a um char. Ex A é 10, B é 11
+/**
+ * Decodes a single character into its corresponding decimal numeric value.
+ *
+ * Maps digits '0'-'9' to 0-9, and letters 'A'-'Z' or 'a'-'z' to 10-35.
+ * Useful for converting a character from a string representation of a base to its integer value.
+ *
+ * @param c The character to decode.
+ * @return The integer value of the character (0-35), or 255 if the character is invalid.
+ */
 int decode_char(char c) {
     //printf("%i\n", c);
     if (c >= 48 && c <= 57) { // Números
@@ -24,7 +32,15 @@ int decode_char(char c) {
     return 255;
 }
 
-// Transforma o valor de base 10 a char
+/**
+ * Encodes a decimal integer into its corresponding character representation.
+ *
+ * Maps values 0-9 to characters '0'-'9', and values 10-35 to uppercase letters 'A'-'Z'.
+ * Acts as the inverse of decode_char for valid base ranges.
+ *
+ * @param v The integer value to encode (expected range 0-35).
+ * @return The character representation, or '_' if the value falls outside the expected bounds.
+ */
 char encode_char(int v) {
     if (v < 10) {
         return (char)(v + 48);
@@ -34,7 +50,16 @@ char encode_char(int v) {
     return '_';
 }
 
-// printa o valor codificado
+/**
+ * Recursively encodes a decimal integer to a specified target base and prints it.
+ *
+ * By dividing the decimal number by the target base, the function prints the
+ * characters in the correct sequence (from most significant to least significant digit).
+ * Note: This function outputs directly to stdout and does not return a string.
+ *
+ * @param dec The base-10 decimal integer to be converted.
+ * @param baseout The target numeric base for the output (up to 36).
+ */
 void encode_base(long int dec, int baseout) {
     if (dec >= baseout) {
         encode_base(dec / baseout, baseout);
@@ -42,7 +67,16 @@ void encode_base(long int dec, int baseout) {
     printf("%c", encode_char(dec%baseout));
 }
 
-// Calcula a potência de números inteiros
+/**
+ * Computes the power of an integer base raised to an integer exponent.
+ *
+ * Used primarily for calculating the positional value of a digit when decoding
+ * strings of arbitrary bases.
+ *
+ * @param base The base integer.
+ * @param exp The exponent integer (expected to be >= 0).
+ * @return The result of base raised to the power of exp.
+ */
 long int ipow(int base, int exp) {
     long int res = 1;
     for (; exp > 0; exp--) {
@@ -51,7 +85,16 @@ long int ipow(int base, int exp) {
     return res;
 }
 
-// decode_base: transforma o valor em string num long int para ser codificado na base de destino
+/**
+ * Recursively decodes a string representing a number in a specific base into a decimal integer.
+ *
+ * It parses the string from left to right, validating characters against the input base.
+ * Invalid characters will trigger a warning to stdout but continues computation.
+ *
+ * @param source A null-terminated string representing the number to decode.
+ * @param basein The numeric base of the input string (up to 36).
+ * @return The decoded base-10 decimal representation of the input string.
+ */
 long int decode_base(char* source, int basein) {
     if (source[0]  == '\0') return 0;
     int n = decode_char(source[0]);
