@@ -1,0 +1,1 @@
+- 2026-03-26: [High] Missing lower-bound validation on numeric inputs used as divisors or loop bounds leads to Denial of Service (Division by Zero, Stack Overflow).

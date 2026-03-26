@@ -102,9 +102,14 @@ void test() {
     printf("\n");
 }
 
-int main() {
+int main(int argc, char** argv) {
+    if (argc > 1 && strcmp(argv[1], "--test") == 0) {
+        test();
+        return 0;
+    }
+
 #define ISBASEVALIDA(base) \
-    if (base > 35) { \
+    if (base < 2 || base > 36) { \
         printf("E: Base inválida!\n"); \
         abort(); \
      }
