@@ -1,0 +1,11 @@
+[tools]
+clang-format = "18.1.8"
+
+[tasks.test]
+run = "make && ./basecalc --test"
+
+[tasks.format]
+run = "clang-format -i main.c"
+
+[tasks.ci]
+run = "mise run format && mise run test"
